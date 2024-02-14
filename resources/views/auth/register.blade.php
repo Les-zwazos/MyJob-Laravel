@@ -16,6 +16,18 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- Type -->
+            <div class="mt-4">
+                <x-input-label for="type" :value="__('Type')" />
+                <select id="type" name="type" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+                    <option value="candidat">Candidat</option>
+                    <option value="recruteur" >Recruteur</option>
+                    <option value="representant" >Représentant</option>
+                </select>
+                <x-input-error :messages="$errors->get('type')" class="mt-2" />
+            </div>
+        
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
