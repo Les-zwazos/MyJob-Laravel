@@ -26,6 +26,13 @@
                 </select>
                 <x-input-error :messages="$errors->get('type')" class="mt-2" />
             </div>
+            
+            
+        
+        <!-- Additional fields for Recruiters -->
+     
+            
+ 
         
 
         <!-- Password -->
@@ -61,4 +68,5 @@
             </x-primary-button>
         </div>
     </form>
+    
 </x-guest-layout>
