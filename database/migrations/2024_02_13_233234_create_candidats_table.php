@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('candidats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('cv');
-            $table->string('domaine');
+            $table->string('cv')->default('aucun');
+            $table->string('domaine')->default('Non specifié');
             $table->timestamps();
             
         });

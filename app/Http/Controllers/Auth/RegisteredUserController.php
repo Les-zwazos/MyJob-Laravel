@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\Admin;
 use App\Models\User;
+use App\Models\Candidat;
+use App\Models\Recruteur;
+use App\Models\Representant;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -44,6 +48,28 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'type' => $request->type,
         ]);
+     
+        switch ($request->type) {
+            case 'candidat':
+                Candidat::create([
+                    'user_id' => $user->id,
+                ]);
+            break;
+            case 'recruteur':
+                Recruteur::create([
+                    'user_id' => $user->id,
+                ]);
+                break;
+            case 'representant':
+                Representant::create([
+                    'user_id' => $user->id,
+                ]);
+                break;
+            
+            
+            
+        }
+
 
         event(new Registered($user));
 

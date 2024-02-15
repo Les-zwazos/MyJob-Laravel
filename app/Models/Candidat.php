@@ -7,13 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Candidat extends User
 {
-    use HasFactory; 
-    protected $fillable = [ 
-        'name',
-        'email',
-        'password',
-        'type',
+    protected $fillable = [
+        'user_id',
         'cv',
         'domaine',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -7,12 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Admin extends User
 {
-    use HasFactory;
-    protected $fillable = [ 
-        'name',
-        'email',
-        'password',
-        'type',
-        
-    ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

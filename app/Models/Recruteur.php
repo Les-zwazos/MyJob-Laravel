@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recruteur extends User
 {
-    protected $fillable = [ 
-        'name',
-        'email',
-        'password',
-        'type',
+    protected $fillable = [
+        'user_id',
         
     ];
+    public function user()
+    {
+        
+        return $this->belongsTo(User::class);
+    }
 }
