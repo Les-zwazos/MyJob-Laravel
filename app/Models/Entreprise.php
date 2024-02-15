@@ -9,8 +9,12 @@ class Entreprise extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'recruteur_id',
         'nom',
         'adresse',
         'contact',
     ];
+    public function recruteur(){
+        return $this->belongsTo(Recruteur::class);
+    }
 }

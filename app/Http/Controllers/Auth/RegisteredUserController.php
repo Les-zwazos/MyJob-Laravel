@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Middleware\Admin;
 use App\Models\User;
 use App\Models\Candidat;
+use App\Models\Entreprise;
 use App\Models\Recruteur;
 use App\Models\Representant;
 use App\Providers\RouteServiceProvider;
@@ -56,8 +57,12 @@ class RegisteredUserController extends Controller
                 ]);
             break;
             case 'recruteur':
-                Recruteur::create([
+                $Recruteur = Recruteur::create([
                     'user_id' => $user->id,
+                ]);
+                Entreprise::create([
+                    'recruteur_id' => $Recruteur->id,
+                    
                 ]);
                 break;
             case 'representant':
