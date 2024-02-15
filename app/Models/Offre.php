@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Offre extends Model
 {
-    use HasFactory;
+    use HasFactory; 
+    protected $fillable = [ 
+        'dateExpiration',
+        'contenu',
+        'type',
+    ];
 }
