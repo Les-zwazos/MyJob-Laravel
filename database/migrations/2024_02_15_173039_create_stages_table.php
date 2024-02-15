@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('stages', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('offre_id')->constrained()->onDelete('cascade');
+            $table->string('dateDebut')->default('');
+            $table->string('duree')->default('00');
             $table->timestamps();
         });
     }
