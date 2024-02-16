@@ -16,6 +16,28 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+               
+                @switch(Auth()->user()->type)
+                    @case('candidat')
+                        
+                        @break
+                    @case('recruteur')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('offres.index')" :active="request()->routeIs('offres.index')">
+                            {{ __('Mes Offres') }}
+                        </x-nav-link>
+                    </div>
+                        
+                        @break
+                    @case('reprentant')
+                        
+                        @break
+                    @case('admin')
+                        
+                        @break
+                    @default
+                        
+                @endswitch
             </div>
 
             <!-- Settings Dropdown -->
