@@ -19,21 +19,29 @@
                
                 @switch(Auth()->user()->type)
                     @case('candidat')
-                        
+                    {{-- Menus supplementaires --}}
+
+                    {{-- Menu supplementaires fin --}}
                         @break
                     @case('recruteur')
+                    {{-- Menus supplementaires --}}
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('offres.index')" :active="request()->routeIs('offres.index')">
                             {{ __('Mes Offres') }}
                         </x-nav-link>
                     </div>
+                    {{-- Menu supplementaires fin --}}
                         
                         @break
                     @case('reprentant')
-                        
+                    {{-- Menus supplementaires --}}
+
+                    {{-- Menu supplementaires fin --}}
                         @break
                     @case('admin')
-                        
+                    {{-- Menus supplementaires --}}
+
+                    {{-- Menu supplementaires fin --}}
                         @break
                     @default
                         
