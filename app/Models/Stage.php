@@ -14,6 +14,6 @@ class Stage extends Model
         'duree',
     ];
     public function offre(){
-        $this->belongsTo(Offre::class);
+        return $this->belongsTo(Offre::class);
     }
 }

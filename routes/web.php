@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware('auth','recruteur')->group(function () {
     Route::get('/offres', [OffreController::class, 'index'])->name('offres.index');
+    Route::get('/stages', [OffreController::class, 'stage'])->name('offres.stage');
+    Route::get('/emplois', [OffreController::class, 'emploi'])->name('offres.emploi');
     
 });
 

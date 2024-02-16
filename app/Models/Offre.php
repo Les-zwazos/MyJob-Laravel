@@ -13,4 +13,13 @@ class Offre extends Model
         'contenu',
         'type',
     ];
+
+    public function stage()
+    {
+        return $this->hasOne(Stage::class);
+    }
+    public function emploi()
+    {
+        return $this->hasOne(Emploi::class);
+    }
 }
