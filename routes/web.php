@@ -29,11 +29,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-Route::middleware('auth','recruteur')->group(function () {
     Route::get('/offres', [OffreController::class, 'index'])->name('offres.index');
     Route::get('/stages', [OffreController::class, 'stage'])->name('offres.stage');
     Route::get('/emplois', [OffreController::class, 'emploi'])->name('offres.emploi');
+    //par recruteur
+    Route::get('/mes_offres', [OffreController::class, 'ttMesOffres'])->name('offres.ttMesOffres');
+    Route::get('/mes_offres/{type}', [OffreController::class, 'ttMesOffres'])->name('offres.MesOffres');
+
+});
+
+
+Route::middleware('auth','recruteur')->group(function () {
+   
+    Route::post('/stages/insert/{type}', [OffreController::class, 'store'])->name('offres.store');
+    Route::get('/offres/create/{type}', [OffreController::class, 'create'])->name('offres.create');
     
 });
 

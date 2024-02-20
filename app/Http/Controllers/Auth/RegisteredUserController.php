@@ -42,7 +42,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'type' => ['required', Rule::in(['candidat', 'admin', 'recruteur', 'representant'])],
         ]);
-
+        // dd($request->type);
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
