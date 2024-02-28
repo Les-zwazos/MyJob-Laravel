@@ -15,11 +15,11 @@
                     <div class="mt-4">
                         <label for="dateExpiration" class="block font-medium text-sm text-gray-700">Date d'expiration</label>
                         <input id="dateExpiration" class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="dateExpiration" :value="old('dateExpiration')" required />
+
                     </div>
 
                     <div class="mt-4">
-                        <label for="contenu" class="block font-medium text-sm text-gray-700">Contenu</label>
-                        <input id="contenu" class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="contenu" :value="old('contenu')" required />
+                         @include('shared.input', ['type' => 'textarea', 'name' => 'contenu', 'value' =>old('contenu')])
                     </div>
 
                     @if($type === 'stage')

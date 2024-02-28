@@ -5,33 +5,27 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
+                    <x-nav-link :href="route('offres.index')" :active="request()->routeIs('offres.index')">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                    </a>
+                    </x-nav-link>
                 </div>
 
                 <!-- Les liens de navigations -->
+
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('Welcome') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('offres.index')" :active="request()->routeIs('offres.index')">
-                        {{ __('Offres') }}
-                    </x-nav-link>
+
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('offres.stage')" :active="request()->routeIs('offres.stage')">
-                        {{ __('Offres de Stage') }}
+                        {{ __('Stages') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('offres.emploi')" :active="request()->routeIs('offres.emploi')">
-                        {{ __("Offres d'emploi") }}
+                        {{ __("Emplois") }}
                     </x-nav-link>
                 </div>
-               
+
                 @switch(Auth()->user()->type)
                     @case('candidat')
                     {{-- Menus supplementaires --}}
@@ -40,27 +34,28 @@
                     {{-- Menu supplementaires fin --}}
                         @break
                     @case('recruteur')
-                    
+
                     {{-- Menus supplementaires --}}
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('offres.ttMesOffres')" :active="request()->routeIs('offres.ttMesOffres')">
                             {{ __('Mes Offres') }}
                         </x-nav-link>
                     </div>
-                    
-                    
+
+                    {{-- }}
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('offres.MesOffres', ['type' => 'stage'])" :active="request()->routeIs('offres.MesOffres')">
                             {{ __('Mes Offres de stage') }}
                         </x-nav-link>
                     </div>
+                    {{-- }}
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('offres.MesOffres', ['type' => 'emploi'])" :active="request()->routeIs('mes_offres/emploi')">
                             {{ __("Mes Offres d'emplois") }}
                         </x-nav-link>
                     </div>
                     {{-- Menu supplementaires fin --}}
-                        
+
                         @break
                     @case('reprentant')
                     {{-- Menus supplementaires --}}
@@ -73,7 +68,7 @@
                     {{-- Menu supplementaires fin --}}
                         @break
                     @default
-                        
+
                 @endswitch
             </div>
             <!-- fin Les liens de navigations -->

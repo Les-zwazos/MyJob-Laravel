@@ -1,33 +1,37 @@
 <x-app-layout>
-    
-    {{-- Page --}}
-      
-    
-        <h1>{{ Auth()->user()->type }}</h1>
 
+    {{-- Page --}}
+
+
+<br>
 @if ($offres->count() > 0)
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Contenu</th>
-                <th>Date de création</th>
-                <th>Date d'expiration</th>
-                <th>Type</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($offres as $offre)
+    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <table class="container">
+            <thead>
                 <tr>
-                    <td>{{ $offre->id }}</td>
-                    <td>{{ $offre->contenu }}</td>
-                    <td>{{ $offre->created_at->format('d/m/Y') }}</td>
-                    <td>{{ $offre->dateExpiration }}</td>
-                    <td>{{ $offre->type }}</td>
+                    <th></th>
+                    <th>Contenu</th>
+                    <th>Date de création</th>
+                    <th>Date d'expiration</th>
+                    <th>Type</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach ($offres as $offre)
+                    <tr>
+                        <td></td>
+                        <td>{{ $offre->contenu }}</td>
+                        <td>{{ $offre->created_at->format('d/m/Y') }}</td>
+                        <td>{{ $offre->dateExpiration }}</td>
+                        <td>{{ $offre->type }}</td>
+                        <td>
+                            <a href="" class="btn btn-primary">Postuer</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @else
     <p>Aucune offre n'est disponible.</p>
 @endif
