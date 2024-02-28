@@ -24,9 +24,11 @@
                         <td>{{ $offre->created_at->format('d/m/Y') }}</td>
                         <td>{{ $offre->dateExpiration }}</td>
                         <td>{{ $offre->type }}</td>
-                        <td>
-                            <a href="" class="btn btn-primary">Postuer</a>
-                        </td>
+
+                        @if (Auth::user()->type == 'candidat')
+                                    <td><a href="/offres/edit/{{ $offre->id }}" class="btn btn-info">Postuler</a>
+                        @endif
+                        
                     </tr>
                 @endforeach
             </tbody>
