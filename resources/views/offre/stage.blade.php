@@ -88,46 +88,28 @@
             <div class="p-6 text-gray-900">
                 <div class="container">
                     <h1>Liste des offres</h1>
-                    
-                    <table class="container">
-                        <thead class="">
-                            <tr>
-                                <th></th>
-                                <th>Contenu</th>
-                                <th>Date de cration</th>
-                                <th>Date d'expiration</th>
-                                <th>Duree</th>
-                                @if (Auth::user()->type == 'recruteur')
-                                    <th>Action</th>
-                                @endif
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($offres as $offre)
-                            <tr>
-                                <td></td>
-                                <td>{{ $offre->contenu }}</td>
-                                <td>{{ $offre->created_at->format('d/m/Y') }}
-                                <td>{{ $offre->dateExpiration }}</td>
-                                <td>{{ $offre->stage->durre }}</td>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                        @foreach ($offres as $offre)
+                            <div class="bg-gray-100 p-4 rounded-lg">
+                                <p><strong>Contenu:</strong> {{ $offre->contenu }}</p>
+                                <p><strong>Date de création:</strong> {{ $offre->created_at->format('d/m/Y') }}</p>
+                                <p><strong>Date d'expiration:</strong> {{ $offre->dateExpiration }}</p>
+                                <p><strong>Durée:</strong> {{ $offre->stage->durre }}</p>
                                 
-                                    <td><a href="/offres/edit/{{ $offre->id }}" class="btn btn-info">Modifier</a>
-                                    <a href="/offres/delete/{{ $offre->id }}" class="btn btn-danger">Supprimer</a></td>
-
-                            
-
+                                    <div>
+                                        <a href="/offres/edit/{{ $offre->id }}" class="btn btn-info">Modifier</a>
+                                        <a href="/offres/delete/{{ $offre->id }}" class="btn btn-danger">Supprimer</a>
+                                    </div>
                                 
-
-
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-            </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
 
