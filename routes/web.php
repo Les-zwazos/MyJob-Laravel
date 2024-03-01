@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\CandidatController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OffreController;
+use App\Http\Controllers\RecruteurController;
+use App\Http\Controllers\RepresentantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //Les offres
     Route::get('/offres', [OffreController::class, 'index'])->name('offres.index');
     Route::get('/stages', [OffreController::class, 'stage'])->name('offres.stage');
     Route::get('/emplois', [OffreController::class, 'emploi'])->name('offres.emploi');
@@ -39,8 +43,17 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth','recruteur')->group(function () {
    
-    Route::post('/stages/insert/{type}', [OffreController::class, 'store'])->name('offres.store');
+    Route::post('/offres/insert/{type}', [OffreController::class, 'store'])->name('offres.store');
     Route::get('/offres/create/{type}', [OffreController::class, 'create'])->name('offres.create');
+    
+});
+
+
+Route::middleware('auth','admin')->group(function () {
+   
+    Route::resource('candidats', CandidatController::class);
+    Route::resource('recruteurs', RecruteurController::class);
+    Route::resource('representants', RepresentantController::class);
     
 });
 

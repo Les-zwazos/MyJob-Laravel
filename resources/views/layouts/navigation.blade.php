@@ -40,7 +40,21 @@
                         @break
                     @case('admin')
                     {{-- Menus supplementaires --}}
-                    
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('candidats.index')" :active="request()->routeIs('candidats.index')">
+                            {{ __('Candidats') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('recruteurs.index')" :active="request()->routeIs('recruteur.index')">
+                            {{ __('Recruteurs') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('representants.index')" :active="request()->routeIs('representant.index')">
+                            {{ __('Representants') }}
+                        </x-nav-link>
+                    </div>
 
                     {{-- Menu supplementaires fin --}}
                         @break
