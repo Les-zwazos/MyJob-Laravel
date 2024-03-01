@@ -55,7 +55,7 @@
     <p>Aucune offre n'est disponible.</p>
 @endif
 
-{{-- Page de Candidat et Recruteur(fin) --}}
+{{-- (fin)Page de Candidat et Recruteur --}}
 @endif
 {{-- Page de Candidat et Recruteur(fin) --}}
 {{-- --------------------------------------------------------------------------------------------------------------------------------------------------------- --}}
@@ -70,6 +70,64 @@
     </h2>
 
 </x-slot>
+
+
+
+
+
+@if ($offres->count() > 0)
+    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <table class="container">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Contenu</th>
+                    <th>Type</th>
+                    <th>Recruteur</th>
+                    <th>Date de création</th>
+                    <th>Date d'expiration</th>
+                    @if (Auth()->user()->type == 'admin')
+                        <th>Action</th>
+                    @endif
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($offres as $offre)
+                    <tr>
+                        <td></td>
+                        <td>{{ $offre->contenu }}</td>
+                        <td>{{ $offre->type }}</td>
+                        <td>{{ $offre->recruteur->user->name }}</td>
+                        <td>{{ $offre->created_at->format('d/m/Y') }}</td>
+                        <td>{{ $offre->dateExpiration }}</td>
+                        @if (Auth::user()->type == 'admin')
+                            <td>
+                                <a href="#{{ $offre->id }}" class="btn btn-info">Afficher</a>
+                                <a href="#{{ $offre->id }}" class="btn btn-info">Entreprise</a>
+                                <form action="{{ route('offres.destroy', ['offre' => $offre->id]) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                </form>
+                            </td>
+                        @endif
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+@else
+    <p>Aucune offre n'est disponible.</p>
+@endif
+
+
+
+
+
+
+
+
+
 
 
 {{-- Page de Admin (fin) --}}
