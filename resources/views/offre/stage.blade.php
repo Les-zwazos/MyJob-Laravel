@@ -94,7 +94,7 @@
                                 <p><strong>Contenu:</strong> {{ $offre->contenu }}</p>
                                 <p><strong>Date de création:</strong> {{ $offre->created_at->format('d/m/Y') }}</p>
                                 <p><strong>Date d'expiration:</strong> {{ $offre->dateExpiration }}</p>
-                                <p><strong>Durée:</strong> {{ $offre->stage->durre }}</p>
+                                <p><strong>Durée:</strong> {{ $offre->stage->duree }}</p>
                                 
                                     <div>
                                         <a href="/offres/edit/{{ $offre->id }}" class="btn btn-info">Modifier</a>
