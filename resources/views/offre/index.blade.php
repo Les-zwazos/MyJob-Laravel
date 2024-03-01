@@ -1,6 +1,15 @@
 <x-app-layout>
 
     {{-- Page --}}
+    @if (Auth()->user()->type == 'admin')
+        <x-slot name="header">
+        
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Gerer toutes les offres') }}
+            </h2>
+        
+        </x-slot>
+    @endif
 
 
 <br>

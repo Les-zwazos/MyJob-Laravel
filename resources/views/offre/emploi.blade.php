@@ -1,4 +1,15 @@
 <x-app-layout>
+    @if (Auth()->user()->type == 'admin')
+    <x-slot name="header">
+    
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __("Gerer les offres d'emplois") }}
+        </h2>
+    
+    </x-slot>
+@endif
+
+
 
 
     <div class="py-12">
