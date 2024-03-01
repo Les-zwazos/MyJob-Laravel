@@ -61,4 +61,50 @@ class EntrepriseController extends Controller
         return redirect()->route('entreprise.index')->with('success', 'Entreprise mise à jour avec succès.');
     }
 
+    public function create()
+    {
+        //
+    }
+
+    
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+
 }

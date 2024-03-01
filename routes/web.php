@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CandidatController;
+use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OffreController;
@@ -54,6 +55,7 @@ Route::middleware('auth','admin')->group(function () {
     Route::resource('candidats', CandidatController::class);
     Route::resource('recruteurs', RecruteurController::class);
     Route::resource('representants', RepresentantController::class);
+    Route::resource('entreprises', EntrepriseController::class);
     
 });
 
