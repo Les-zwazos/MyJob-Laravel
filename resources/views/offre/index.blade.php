@@ -1,16 +1,9 @@
 <x-app-layout>
+{{-- Page de Candidat et Recruteur --}}
+@if (Auth()->user()->type == 'candidat' || Auth()->user()->type == 'recruteur')
+{{-- Page de Candidat et Recruteur --}}
 
-    {{-- Page --}}
-    @if (Auth()->user()->type == 'admin')
-        <x-slot name="header">
-        
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Gerer toutes les offres') }}
-            </h2>
-        
-        </x-slot>
-    @endif
-
+   
 
 <br>
 @if ($offres->count() > 0)
@@ -62,5 +55,24 @@
     <p>Aucune offre n'est disponible.</p>
 @endif
 
-    {{-- Page --}}
+{{-- Page de Candidat et Recruteur(fin) --}}
+@endif
+{{-- Page de Candidat et Recruteur(fin) --}}
+{{-- --------------------------------------------------------------------------------------------------------------------------------------------------------- --}}
+{{-- --------------------------------------------------------------------------------------------------------------------------------------------------------- --}}
+{{-- Page de Admin --}}
+@if (Auth()->user()->type == 'admin' )
+{{-- Page de Admin --}}
+<x-slot name="header">
+        
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        {{ __('Gerer toutes les offres') }}
+    </h2>
+
+</x-slot>
+
+
+{{-- Page de Admin (fin) --}}
+@endif
+{{-- Page de Admin (fin) --}}
 </x-app-layout>

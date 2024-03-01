@@ -1,13 +1,8 @@
 <x-app-layout>
-    @if (Auth()->user()->type == 'admin')
-    <x-slot name="header">
+{{-- Page de Candidat et Recruteur --}}
+@if (Auth()->user()->type == 'candidat' || Auth()->user()->type == 'recruteur')
+{{-- Page de Candidat et Recruteur --}}
     
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __("Gerer les offres d'emplois") }}
-        </h2>
-    
-    </x-slot>
-@endif
 
 
 
@@ -64,4 +59,28 @@
             </div>
         </div>
     </div>
+{{-- Page de Candidat et Recruteur(fin) --}}
+@endif
+{{-- Page de Candidat et Recruteur(fin) --}}
+{{-- --------------------------------------------------------------------------------------------------------------------------------------------------------- --}}
+{{-- --------------------------------------------------------------------------------------------------------------------------------------------------------- --}}
+{{-- Page de Admin --}}
+@if (Auth()->user()->type == 'admin' )
+{{-- Page de Admin --}}
+
+
+<x-slot name="header">
+    
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        {{ __('Gerer les offres de stage') }}
+    </h2>
+
+</x-slot>
+
+
+
+
+{{-- Page de Admin (fin) --}}
+@endif
+{{-- Page de Admin (fin) --}}
 </x-app-layout>
