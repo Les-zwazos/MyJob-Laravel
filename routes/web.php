@@ -44,6 +44,8 @@ Route::middleware('auth','recruteur')->group(function () {
     
 });
 
+
+
 require __DIR__.'/auth.php';
 
 

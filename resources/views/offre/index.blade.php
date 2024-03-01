@@ -28,6 +28,12 @@
                         @if (Auth::user()->type == 'candidat')
                                     <td><a href="/offres/edit/{{ $offre->id }}" class="btn btn-info">Postuler</a>
                         @endif
+                        @if (Auth::user()->type == 'admin')
+                                    <td><a href="#{{ $offre->id }}" class="btn btn-info">Afficher</a>
+                                    <td><a href="#{{ $offre->id }}" class="btn btn-info">Entreprise</a>
+                                    <td><a href="#{{ $offre->id }}" class="btn btn-info">Supprimer</a>
+
+                        @endif
                         
                     </tr>
                 @endforeach
