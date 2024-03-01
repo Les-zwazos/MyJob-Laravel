@@ -104,7 +104,7 @@
                             <td>
                                 <a href="#{{ $offre->id }}" class="btn btn-info">Afficher</a>
                                 <a href="#{{ $offre->id }}" class="btn btn-info">Entreprise</a>
-                                <form action="{{ route('offres.destroy', ['offre' => $offre->id]) }}" method="POST" style="display: inline;">
+                                <form action="{{ route('offres.destroy', ['id' => $offre->id]) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Supprimer</button>

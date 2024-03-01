@@ -40,27 +40,31 @@ Route::middleware('auth')->group(function () {
     Route::get('/mes_offres', [OffreController::class, 'ttMesOffres'])->name('offres.ttMesOffres');
     Route::get('/mes_offres/{type}', [OffreController::class, 'ttMesOffres'])->name('offres.MesOffres');
 });
-Route::middleware('auth','admin')->group(function () {
-   
-    Route::resource('candidats', CandidatController::class);
-    Route::resource('recruteurs', RecruteurController::class);
-    Route::resource('representants', RepresentantController::class);
-    Route::resource('offres', OffreController::class);
-    Route::resource('entreprises', EntrepriseController::class);
-    
-});
 
 
 Route::middleware('auth','recruteur')->group(function () {
    
     Route::post('/offres/insert/{type}', [OffreController::class, 'store'])->name('offres.store');
     Route::get('/offres/create/{type}', [OffreController::class, 'create'])->name('offres.create');
-    Route::delete('/offres/{id}', [OffreController::class, 'destroy'])->name('offres.destroy.byRecruteur');
+    Route::delete('/offres/{id}', [OffreController::class, 'destroy'])->name('offres.destroy');
+
     
 });
 
 
+Route::middleware('auth','admin')->group(function () {
+   
+    Route::resource('candidats', CandidatController::class);
+    Route::resource('recruteurs', RecruteurController::class);
+    Route::resource('representants', RepresentantController::class);
+    Route::resource('entreprises', EntrepriseController::class);
 
+
+    
+    Route::delete('/offres/{id}', [OffreController::class, 'destroy'])->name('offres.destroy');
+
+    
+});
 
 
 
