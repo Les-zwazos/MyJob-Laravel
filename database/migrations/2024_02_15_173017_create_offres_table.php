@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('offres', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('recruteur_id')->constrained()->onDelete('cascade');
             $table->string('dateExpiration');
             $table->string('contenu');
             $table->enum('type', ['stage', 'emploi'])->default('emploi');

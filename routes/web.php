@@ -46,6 +46,7 @@ Route::middleware('auth','recruteur')->group(function () {
    
     Route::post('/offres/insert/{type}', [OffreController::class, 'store'])->name('offres.store');
     Route::get('/offres/create/{type}', [OffreController::class, 'create'])->name('offres.create');
+    Route::delete('/offres/{id}', [OffreController::class, 'destroy'])->name('offres.destroy');
     
 });
 

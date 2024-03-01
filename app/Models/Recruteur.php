@@ -16,4 +16,7 @@ class Recruteur extends User
         
         return $this->belongsTo(User::class);
     }
+    public function offre(){
+        return $this->hasOne(Offre::class);
+    }
 }

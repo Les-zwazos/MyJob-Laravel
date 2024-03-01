@@ -28,6 +28,7 @@
                             <thead >
                                 <tr>
                                     <th>Contenu</th>
+                                    <th>Recruteur</th>
                                     <th>Date de cration</th>
                                     <th>Date d'expiration</th>
                                     <th>Contrat</th>
@@ -40,6 +41,7 @@
                                 @foreach ($offres as $offre)
                                 <tr>
                                     <td>{{ $offre->contenu }}</td>
+                                    <td>{{ $offre->recruteur->user->name}}</td>
                                     <td>{{ $offre->created_at->format('d/m/Y') }}
                                     <td>{{ $offre->dateExpiration }}</td>
                                     <td>{{ $offre->emploi->contrat }}</td>

@@ -28,6 +28,7 @@
                                 <tr>
                                     <th></th>
                                     <th>Contenu</th>
+                                    <th>Recruteur</th>
                                     <th>Date de cration</th>
                                     <th>Date d'expiration</th>
                                     <th>Duree</th>
@@ -41,6 +42,7 @@
                                 <tr>
                                     <td></td>
                                     <td>{{ $offre->contenu }}</td>
+                                    <td>{{ $offre->recruteur->user->name}}</td>
                                     <td>{{ $offre->created_at->format('d/m/Y') }}
                                     <td>{{ $offre->dateExpiration }}</td>
                                     <td>{{ $offre->stage->durre }}</td>

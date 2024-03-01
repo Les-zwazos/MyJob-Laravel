@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Offre;
 use App\Models\Stage;
+use Illuminate\Http\RedirectResponse;
 
 class OffreController extends Controller
 {
@@ -53,8 +54,16 @@ class OffreController extends Controller
             'type' => 'required|string|max:10',
         ]);
     
-        // Création de l'offre
-        $offre = Offre::create($request->only('dateExpiration', 'contenu', 'type'));
+        // Obtenir l'ID du recruteur actuellement authentifié
+        $recruteur_id = auth()->user()->id;
+
+        // Création de l'offre avec le recruteur_id
+        $offre = Offre::create([
+            'recruteur_id' => $recruteur_id,
+            'dateExpiration' => $request->dateExpiration,
+            'contenu' => $request->contenu,
+            'type' => $request->type,
+        ]);
     
         switch ($request->type) {
             case 'stage':
@@ -90,7 +99,24 @@ class OffreController extends Controller
     // show
 
     // destroy
+    public function destroy($id): RedirectResponse
+{
+    // Trouver l'offre à supprimer
+    $offre = Offre::findOrFail($id);
 
+    // Supprimer l'objet associé (stage ou emploi)
+    if ($offre->type === 'stage') {
+        $offre->stage->delete();
+    } elseif ($offre->type === 'emploi') {
+        $offre->emploi->delete();
+    }
+
+    // Supprimer l'offre
+    $offre->delete();
+
+    // Redirection avec un message de succès
+    return redirect()->to('/offres')->with('success', 'Offre supprimée avec succès.');
+}
 
 
 }
